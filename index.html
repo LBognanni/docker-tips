@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html data-theme="light">
+
+<head>
+  <title>{{SLIDES_TITLE}}</title>
+  <meta charset="utf-8">
+  <link
+    rel="stylesheet"
+    href="pico.min.css"
+  >
+  <style>
+    .bottom-notes {
+      position: absolute;
+      bottom: 2em;
+      right: 1em;
+      display: flex;
+      align-items: center;
+    }
+    img {
+      float: right;
+      max-width: 50%;
+    }
+    .bottom-notes img {
+      float: none;
+    }
+    .title {
+      background-color: white;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      & p{
+        font-size: 80%;
+        color: gray;
+        padding: 0.5ex;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+    <script src="remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+          sourceUrl: './text.md',
+          highlightStyle: 'monokai',
+          highlightLines: true
+      });
+    </script>
+</body>
+</html>

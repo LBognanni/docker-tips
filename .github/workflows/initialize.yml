@@ -1,0 +1,57 @@
+name: Initialize Presentation
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: 'Presentation Title'
+        required: true
+      author:
+        description: 'Author Name'
+        required: true
+        default: 'Loris Bognanni'
+      date:
+        description: 'Presentation Date'
+        required: true
+
+jobs: 
+
+  InitializeRepo:
+    name: Initialize Repository
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      
+      - name: Update slides
+        run: |
+          SLIDES_TITLE="${{ github.event.inputs.title }}"
+          SLIDES_AUTHOR="${{ github.event.inputs.author }}"
+          SLIDES_DATE="${{ github.event.inputs.date }}"
+          REPO=$(echo "${{ github.repository }}" | sed 's/[&/\]/\\&/g')
+          sed -i \
+            -e "s/{{SLIDES_TITLE}}/${SLIDES_TITLE}/g" \
+            -e "s/{{SLIDES_AUTHOR}}/${SLIDES_AUTHOR}/g" \
+            -e "s/{{SLIDES_DATE}}/${SLIDES_DATE}/g" \
+            -e "s/{{REPO}}/${REPO}/g" \
+            text.md
+          sed -i \
+            -e "s/{{SLIDES_TITLE}}/${SLIDES_TITLE}/g" \
+            -e "s/{{SLIDES_AUTHOR}}/${SLIDES_AUTHOR}/g" \
+            -e "s/{{REPO}}/${REPO}/g" \
+            index.html
+      - name: Update README
+        run: |
+          echo "# ${{ github.event.inputs.title }}" > README.md
+          echo "Date: ${{ github.event.inputs.date }}" >> README.md
+      - name: Commit Changes
+        uses: stefanzweifel/git-auto-commit-action@v5    
+        with:
+          commit_message: ":speech_balloon: Initialize Presentation"
+        
