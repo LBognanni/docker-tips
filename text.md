@@ -1,15 +1,15 @@
 class: center, middle
 
-# {{SLIDES_TITLE}}
+# I wrote dockerfiles for a week. This is what I learned
 
 <br />
 
-### {{SLIDES_AUTHOR}}
-#### {{SLIDES_DATE}}
+### Loris Bognanni
+#### Nov 2024
 
 .bottom-notes[
-<a href="https://github.com/{{REPO}}/blob/main/text.md"><img src="markdown.png" style="width:2em;" title="Read this presentation as markdown" /></a>
-<a href="https://github.com/{{REPO}}"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" style="width:2em;" title="Github repo" /></a> 
+<a href="https://github.com/LBognanni/docker-tips/blob/main/text.md"><img src="markdown.png" style="width:2em;" title="Read this presentation as markdown" /></a>
+<a href="https://github.com/LBognanni/docker-tips"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" style="width:2em;" title="Github repo" /></a> 
 ]
 
 ---
@@ -17,7 +17,7 @@ class: center, middle
 layout: true
 
 .title[
-    {{SLIDES_TITLE}}]
+    I wrote dockerfiles for a week. This is what I learned]
 
 ---
 
